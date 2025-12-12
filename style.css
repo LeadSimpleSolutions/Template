@@ -1,0 +1,260 @@
+:root {
+  --brand: {{BRAND_COLOR}};
+  --accent: {{ACCENT_COLOR}};
+  --dark: {{DARK_COLOR}};
+  --muted: {{MUTED_COLOR}};
+  --bg: {{BG_COLOR}};
+  --card-bg: {{CARD_BG_COLOR}};
+  --radius: {{BORDER_RADIUS}};
+  --wrap: {{WRAP_WIDTH}};
+  --shadow: {{BOX_SHADOW}};
+  --glass: {{GLASS_BG}};
+}
+
+/* Hero */
+.hero {
+  background-image:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.04) 0%,
+      rgba(255,255,255,0.00) 40%,
+      rgba(0,0,0,0.25) 100%),
+    none !important;
+  background-color: var(--bg) !important;
+  background-blend-mode: normal !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Cards & panels */
+.card,
+.service,
+.about-card,
+.small-card,
+.contact-card,
+.service-row {
+  background-image:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.06) 0%,
+      rgba(255,255,255,0.02) 35%,
+      rgba(0,0,0,0.18) 100%),
+    none !important;
+  background-color: var(--card-bg) !important;
+  background-blend-mode: normal !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(180deg,
+    rgba({{BRAND_RGB}},0.25) 0%,
+    rgba({{BRAND_RGB}},0.18) 60%,
+    rgba(0,0,0,0.55) 100%
+  ) !important;
+  border: 1px solid rgba({{BRAND_RGB}},0.45) !important;
+  color: {{BRAND_COLOR}} !important;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+  transition: all 0.22s ease !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg,
+    rgba({{BRAND_RGB}},0.35) 0%,
+    rgba({{BRAND_RGB}},0.25) 55%,
+    rgba(0,0,0,0.65) 100%
+  ) !important;
+  border-color: rgba({{BRAND_RGB}},0.60) !important;
+  color: {{BRAND_HOVER_COLOR}} !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(0,0,0,0.45) !important;
+}
+
+/* Header */
+.site-header {
+  background-image:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.05) 0%,
+      rgba(0,0,0,0.30) 100%),
+    none !important;
+  background-color: var(--bg) !important;
+  border-bottom: 1px solid rgba(0,40,60,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(4px);
+}
+
+/* Typography and text colors */
+body {
+  font-family: {{FONT_FAMILY}};
+  background: var(--bg);
+  color: var(--dark);
+  line-height: 1.55;
+}
+
+/* Layout */
+.wrap {
+  width: 92%;
+  max-width: var(--wrap);
+  margin: 0 auto;
+}
+
+/* Hero grid */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 28px;
+  align-items: start;
+}
+
+/* Cards and forms */
+.card {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* Service cards */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.service {
+  background: var(--card-bg);
+  padding: 18px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: .25s ease;
+}
+
+.service:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba({{BRAND_RGB}},0.45);
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 14px;
+  background-color: var(--brand);
+}
+
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--bg);
+  padding: 25px 0 12px;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.footer-stack a {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.footer-stack a:hover {
+  color: var(--brand);
+}
+
+/* Mini CTA */
+.mini-cta {
+  text-align: center;
+  padding: 1px 0;
+  color: var(--muted);
+  background: var(--bg);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.mini-cta h2 {
+  color: var(--dark);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.mini-cta p {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Testimonial carousel */
+.testimonial-carousel {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.t-viewport {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.t-viewport .testimonial-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.t-viewport .testimonial-track blockquote {
+  width: 100%;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  padding: 28px 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Buttons for carousel */
+.t-prev, .t-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg,
+    rgba({{BRAND_RGB}},0.25) 0%,
+    rgba({{BRAND_RGB}},0.18) 60%,
+    rgba(0,0,0,0.55) 100%
+  );
+  color: var(--brand);
+  border: 1px solid rgba({{BRAND_RGB}},0.45);
+  padding: 10px 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  opacity: 0.95;
+  z-index: 20;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  backdrop-filter: blur(4px);
+}
+
+.t-prev:hover, .t-next:hover {
+  background: linear-gradient(180deg,
+    rgba({{BRAND_RGB}},0.32) 0%,
+    rgba({{BRAND_RGB}},0.22) 55%,
+    rgba(0,0,0,0.60) 100%
+  );
+  border-color: rgba({{BRAND_RGB}},0.55);
+  color: {{BRAND_HOVER_COLOR}};
+}
