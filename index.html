@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="stylesheet" href="{{STYLESHEET_PATH}}" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="wrap header-grid">
+      <div class="brand">
+        <img src="{{LOGO_SRC}}" alt="{{LOGO_ALT}}" class="brand-logo">
+        <div class="brand-text">
+          <strong class="brand-name">{{BRAND_NAME}}</strong>
+          <span class="brand-tag">{{BRAND_TAGLINE}}</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="{{HOME_LINK}}" class="nav-link active">{{NAV_HOME}}</a>
+        <a href="{{ABOUT_LINK}}" class="nav-link">{{NAV_ABOUT}}</a>
+        <a href="{{SERVICES_LINK}}" class="nav-link">{{NAV_SERVICES}}</a>
+        <a href="{{CONTACT_LINK}}" class="nav-link cta">{{NAV_CONTACT}}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-content">
+          <h1>{{HERO_TITLE}}</h1>
+          <p class="lead">{{HERO_LEAD}}</p>
+          <p class="lead-below">{{HERO_SUBLEAD}}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="{{HERO_CTA_1_LINK}}">{{HERO_CTA_1_TEXT}}</a>
+            <a class="btn btn-outline" href="{{HERO_CTA_2_LINK}}">{{HERO_CTA_2_TEXT}}</a>
+          </div>
+
+          <ul class="trust-list">
+            <li>✔ {{TRUST_ITEM_1}}</li>
+            <li>✔ {{TRUST_ITEM_2}}</li>
+            <li>✔ {{TRUST_ITEM_3}}</li>
+          </ul>
+        </div>
+
+        <aside class="lead-form">
+          <div class="card">
+            <h3>{{FORM_TITLE}}</h3>
+            <p class="muted">{{FORM_SUBTITLE}}</p>
+
+            <form id="leadForm" action="{{FORM_ACTION}}" method="POST">
+              <input type="hidden" name="access_key" value="{{FORM_ACCESS_KEY}}">
+
+              <label for="q-name">Name</label>
+              <input id="q-name" name="name" type="text" required placeholder="{{PLACEHOLDER_NAME}}">
+
+              <label for="q-phone">Phone</label>
+              <input id="q-phone" name="phone" type="tel" required placeholder="{{PLACEHOLDER_PHONE}}">
+
+              <label for="q-email">Email</label>
+              <input id="q-email" name="email" type="email" placeholder="{{PLACEHOLDER_EMAIL}}">
+
+              <label for="q-service">Service</label>
+              <select id="q-service" name="service" required>
+                {{#SERVICES}}
+                <option value="{{SERVICE_NAME}}">{{SERVICE_LABEL}}</option>
+                {{/SERVICES}}
+              </select>
+
+              <label for="q-message">Message</label>
+              <textarea id="q-message" name="message" rows="3" placeholder="{{PLACEHOLDER_MESSAGE}}"></textarea>
+
+              <button class="btn btn-primary" type="submit">{{FORM_BUTTON_TEXT}}</button>
+              <p id="leadResult" class="form-status" aria-live="polite"></p>
+            </form>
+
+            <p class="footnote">{{FORM_FOOTNOTE}} <a href="tel:{{PHONE_NUMBER}}" class="link-phone">{{PHONE_DISPLAY}}</a></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section">
+      <div class="wrap">
+        <h2 class="section-title">{{SERVICES_TITLE}}</h2>
+        <p class="section-sub">{{SERVICES_SUBTITLE}}</p>
+
+        <div class="services-grid modern-services">
+          {{#SERVICE_CARDS}}
+          <article class="service-card">
+            <div class="service-icon">
+              <img src="{{ICON_SRC}}" alt="{{ICON_ALT}}">
+            </div>
+            <h3>{{SERVICE_NAME}}</h3>
+            <p>{{SERVICE_DESCRIPTION}}</p>
+          </article>
+          {{/SERVICE_CARDS}}
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="section">
+      <div class="wrap">
+        <h2 class="section-title">{{PORTFOLIO_TITLE}}</h2>
+        <p class="section-sub">{{PORTFOLIO_SUBTITLE}}</p>
+
+        <div class="portfolio-grid">
+          {{#PORTFOLIO_IMAGES}}
+          <img src="{{IMAGE_SRC}}" alt="{{IMAGE_ALT}}">
+          {{/PORTFOLIO_IMAGES}}
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section-light">
+      <div class="wrap">
+        <h2 class="section-title">{{TESTIMONIALS_TITLE}}</h2>
+
+        <div class="testimonial-carousel">
+          <div class="t-viewport">
+            <div class="testimonial-track">
+              {{#TESTIMONIALS}}
+              <blockquote>
+                <p>"{{QUOTE}}"</p>
+                <cite>— {{AUTHOR}}</cite>
+              </blockquote>
+              {{/TESTIMONIALS}}
+            </div>
+          </div>
+
+          <button class="t-prev">❮</button>
+          <button class="t-next">❯</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MINI CTA -->
+    <section class="mini-cta">
+      <h2>{{MINI_CTA_TITLE}}</h2>
+      <p>{{MINI_CTA_SUBTITLE}}</p>
+
+      <div class="mini-cta-buttons">
+        <a href="{{MINI_CTA_BUTTON_1_LINK}}" class="btn btn-primary">{{MINI_CTA_BUTTON_1_TEXT}}</a>
+        <a href="tel:{{PHONE_NUMBER}}" class="btn btn-primary">{{MINI_CTA_BUTTON_2_TEXT}}</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-content">
+      <div class="footer-stack">
+        <a href="{{HOME_LINK}}">{{NAV_HOME}}</a>
+        <a href="{{SERVICES_LINK}}">{{NAV_SERVICES}}</a>
+        <a href="{{ABOUT_LINK}}">{{NAV_ABOUT}}</a>
+        <a href="tel:{{PHONE_NUMBER}}">{{PHONE_DISPLAY}}</a>
+        <a href="mailto:{{EMAIL_ADDRESS}}">{{EMAIL_DISPLAY}}</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> {{BRAND_NAME}}</span>
+      <span class="tagline">{{FOOTER_TAGLINE}}</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- TESTIMONIAL CAROUSEL SCRIPT -->
+  <script>
+    let index = 0;
+    const track = document.querySelector(".testimonial-track");
+    const slides = document.querySelectorAll(".testimonial-track blockquote");
+    const total = slides.length;
+
+    document.querySelector(".t-next").onclick = () => {
+      index = (index + 1) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    document.querySelector(".t-prev").onclick = () => {
+      index = (index - 1 + total) % total;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+  </script>
+
+  <!-- EXTERNAL WIDGETS -->
+  <script>
+    (function(e,a,d,i,c,t=a.createElement(d)){e[c]=e[c]||function(){(e[c].q=e[c].q||[]).push(arguments)},t.src=i,t.async=1,a.body.insertAdjacentElement("beforeend",t)})(window,document,"script","{{QUICKCHAT_SRC}}","_quickchat");
+    _quickchat("host", "{{QUICKCHAT_HOST}}");
+    _quickchat("init", "{{QUICKCHAT_INIT}}");
+  </script>
+</body>
+</html>
