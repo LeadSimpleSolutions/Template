@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{PAGE_TITLE}}</title>
+  <meta name="description" content="{{META_DESCRIPTION}}">
+  <link rel="stylesheet" href="{{STYLESHEET_PATH}}">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="wrap header-grid">
+      <div class="brand">
+        <img src="{{LOGO_SRC}}" alt="{{LOGO_ALT}}" class="brand-logo">
+        <div class="brand-text">
+          <strong class="brand-name">{{BRAND_NAME}}</strong>
+          <span class="brand-tag">{{BRAND_TAGLINE}}</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="{{HOME_LINK}}" class="nav-link">{{NAV_HOME}}</a>
+        <a href="{{ABOUT_LINK}}" class="nav-link">{{NAV_ABOUT}}</a>
+        <a href="{{SERVICES_LINK}}" class="nav-link">{{NAV_SERVICES}}</a>
+        <a href="{{CONTACT_LINK}}" class="nav-link active cta">{{NAV_CONTACT}}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-light wrap contact-grid">
+      <div>
+        <h1>{{CONTACT_TITLE}}</h1>
+        <p>{{CONTACT_DESCRIPTION}}</p>
+
+        <div class="contact-cards">
+          {{#CONTACT_CARDS}}
+          <div class="contact-card">
+            <h4>{{CARD_TITLE}}</h4>
+            <p>
+              {{#IF_LINK}}
+                <a href="{{CARD_LINK}}" class="{{LINK_CLASS}}">{{CARD_CONTENT}}</a>
+              {{/IF_LINK}}
+              {{#IF_TEXT}}
+                {{CARD_CONTENT}}
+              {{/IF_TEXT}}
+            </p>
+          </div>
+          {{/CONTACT_CARDS}}
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>{{FORM_TITLE}}</h3>
+
+          <form id="contactForm" action="{{FORM_ACTION}}" method="POST">
+            <input type="hidden" name="access_key" value="{{FORM_ACCESS_KEY}}">
+
+            <label for="c-name">Name</label>
+            <input id="c-name" name="name" type="text" required placeholder="{{PLACEHOLDER_NAME}}">
+
+            <label for="c-email">Email</label>
+            <input id="c-email" name="email" type="email" required placeholder="{{PLACEHOLDER_EMAIL}}">
+
+            <label for="c-phone">Phone</label>
+            <input id="c-phone" name="phone" type="tel" required placeholder="{{PLACEHOLDER_PHONE}}">
+
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" rows="4" required placeholder="{{PLACEHOLDER_MESSAGE}}"></textarea>
+
+            <button class="btn btn-primary" type="submit">{{FORM_BUTTON_TEXT}}</button>
+            <p id="result" class="form-status" aria-live="polite"></p>
+          </form>
+
+          <script>
+            const form = document.getElementById('contactForm');
+            const result = document.getElementById('result');
+
+            form.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              const formData = new FormData(form);
+
+              result.textContent = "{{FORM_SENDING_TEXT}}";
+
+              const response = await fetch("{{FORM_ACTION}}", {
+                method: "POST",
+                body: formData
+              });
+
+              const data = await response.json();
+
+              if (data.success) {
+                result.textContent = "{{FORM_SUCCESS_TEXT}}";
+                form.reset();
+              } else {
+                result.textContent = "{{FORM_ERROR_TEXT}}";
+              }
+            });
+          </script>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap footer-content">
+      <div class="footer-stack">
+        <a href="{{HOME_LINK}}">{{NAV_HOME}}</a>
+        <a href="{{SERVICES_LINK}}">{{NAV_SERVICES}}</a>
+        <a href="{{ABOUT_LINK}}">{{NAV_ABOUT}}</a>
+        <a href="tel:{{PHONE_NUMBER}}">{{PHONE_DISPLAY}}</a>
